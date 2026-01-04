@@ -28,11 +28,12 @@ Officeファイルに関してはPDF版を用意いたしました。
 ## 成果物一覧
 | 制作区分 | 制作物名                         | 説明                                                            | 言語      |
 | -------- | -------------------------------- | --------------------------------------------------------------- |---------- |
-| 01       | ファイル名検索バッチ             | 指定のディレクトリ配下からファイルを検索するバッチ              | bat          |
-| 02       | OracleDBユーザー選択バッチ       | OracleDBのログインを効率化するバッチ                            | bat          |
-| 03       | ウィンドウスナップexe            | 別アプリを起動させ、起動させたウィンドウを右か左にスナップする  | C          |
-| 98       | ソースコード       | 制作物レベルではないが単品で技術の証明ができるものなどを格納                                                | VBScript          |
-| 99       | その他 制作物 管理フォルダ       | WBS、バグ管理表を格納                                                | -          |
+| 01       | [ファイル名検索バッチ](https://github.com/Test-Information/portfolio/blob/main/01_FileNameSearch/01_FileNameSearch.bat)             | 指定のディレクトリ配下からファイルを検索するバッチ              | bat          |
+| 02       | [OracleDBユーザー選択バッチ](https://github.com/Test-Information/portfolio/blob/main/02_SQLPlus_LoginUserSelect/02_SQLPlus_LoginUserSelect.bat)       | OracleDBのログインを効率化するバッチ                            | bat          |
+| 03       | [ウィンドウスナップexe](https://github.com/Test-Information/portfolio/blob/main/03_StartUpFiles/src/StartUpFiles.cpp)            | 別アプリを起動させ、起動させたウィンドウを右か左にスナップする  | C          |
+| 04       | [勤務表自動リセット マクロ](https://github.com/Test-Information/portfolio/blob/main/04_Work_Schedule/src/Module1.bas)            | 勤務表の定例的な入力作業を自動化する  | Excel VBA          |
+| 98       | [ソースコード](https://github.com/Test-Information/portfolio/blob/main/98_SourceCode/earthquake.vbs)       | 制作物レベルではないが単品で技術の証明ができるものなどを格納                                                | VBScript          |
+| 99       | その他 制作物 管理フォルダ       | [WBS](https://github.com/Test-Information/portfolio/blob/main/99_Others/pdf/WBS.pdf)、[バグ管理表](https://github.com/Test-Information/portfolio/blob/main/99_Others/pdf/Bug_Management_%231.pdf)を格納                                                | -          |
 
 
 
