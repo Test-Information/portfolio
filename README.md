@@ -37,4 +37,7 @@ Officeファイルに関してはPDF版を用意いたしました。
 
 
 
+---
 
+## デジタルバッジ
+[![Java Gold](education.oracle.com)](https://catalog-education.oracle.com/ords/certview/sharebadge?id=1B95E9A663D35A568BF9D4E2A771FE0D11ABCC4B3C5B1CA8B5BDFF58028CC4FE)
