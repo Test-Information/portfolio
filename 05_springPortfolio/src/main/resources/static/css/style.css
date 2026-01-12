@@ -1,0 +1,57 @@
+@charset "UTF-8";
+
+/* 全体の基本設定 */
+body {
+    font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    margin: 20px;
+    background-color: #f9f9f9;
+}
+
+/* メニュー画面一覧表示用 */
+.box{
+	margin: 5px 0 5px 0;
+}
+
+/* 入力ボックス（テキストボックス）のサイズとデザイン */
+input[type="text"], 
+input[type="password"], 
+textarea {
+    width: 100%;           /* 幅を親要素サイズに合わせる */
+    max-width: 400px;      /* 最大幅 */
+    padding: 10px;         /* 内側の余白 */
+    font-size: 16px;       /* 文字サイズ */
+    border: 1px solid #ccc;
+    border-radius: 4px;    /* 角の調整 */
+    box-sizing: border-box;
+}
+
+/* プレースホルダーの文字色とサイズ */
+input::placeholder {
+    color: #999;
+    font-size: 0.9em;
+}
+
+/* フォーカス時（クリックした時）の枠線 */
+input:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* フォーム送信ボタンのスタイル */
+button, input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* ボタンホバー時の処理 */
+button:hover {
+    background-color: #0056b3;
+}

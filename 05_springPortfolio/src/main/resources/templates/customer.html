@@ -1,0 +1,41 @@
+<!--
+	ポートフォリオとしての今後の課題：
+	１．戻るボタンの追加
+	２．入力内容チェック内容の精査
+	３．顧客情報の表示
+	４．顧客情報の重複防止
+-->
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head> 
+    <title>顧客作成画面</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="/css/style.css">
+</head>
+<script th:inline="javascript">
+	window.onload = function(){
+		const result = /*[[${result}]]*/ null;		// Postメソッド送信結果
+		if(result != null){
+			alert(result.replaceAll('\\n', '\n'));	// エスケープされた改行コードの有効化
+		}
+	}
+</script>
+<body>
+	<h1>顧客作成画面</h1>
+	<p>顧客情報を作成しデータベースに登録する画面です。</p>
+	<form action="/customer" method="post">
+		<input type="hidden" name="send" value="true">
+		<div class="box">
+			<span>顧客名:</span>
+			<!--全角文字を許容し、半角英数字を制限-->
+			<input type="text" name="name" pattern="^(?!.*[0-9A-Za-z]).*$" placeholder="作成する顧客名を入力してください" required th:value="${name}" autofocus>
+		</div>
+		<div class="box">
+			<span>入金額:</span>
+			<!--半角数字のみ許容-->
+			<input type="text" name="balance" pattern="\d*" placeholder="作成する顧客口座に入金する金額を入力してください" th:value="${balance}">
+		</div>
+	<input type="submit" value="顧客作成">
+	</form>
+</body>
+</html>
