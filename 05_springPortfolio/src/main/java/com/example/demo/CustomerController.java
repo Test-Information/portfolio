@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestParam;
  *  2)0円の場合
  *  3)ゼロパディングされた金額の場合
  *  4)テキストボックスがデベロッパーツールで改変された場合
+ *  5)long型への文字列代入(400)
  */
 @Controller
 public class CustomerController {
@@ -53,29 +54,40 @@ public class CustomerController {
     		@RequestParam (required = false) String name,
     		@RequestParam(required = false) Long balance,
     		Model model) {
-    	
+
     	Customer cust =	 new Customer();	// 顧客情報作成モデルの生成
     	String errMsg = "";								// エラーメッセージ初期化
-
-    	Optional<String> optName = Optional.ofNullable(name);
-    	Optional<Long> optBalance = Optional.ofNullable(balance);
-
+    	char[] invalidChars = { '!', '"', '#', '$', '%', '&', '\'', '(', ')', '=', '~', '|', '`', '{', '+', '*', '}', '<', '>', '?', '_' 	};	// 入力値として無効な文字一覧
+    	
+    	
     	// 顧客名 入力値有無の判定
-    	if(optName.isPresent()) {
-    		cust.setName(name);	
-    	} else {
+    	if(!(StringUtils.hasText(name))) {
     		errMsg += "顧客名が入力されていません\n";
+    	}else {
+        	outerLoop:
+        	for(int cnt = 0; cnt < name.length(); cnt++) {
+            	for(int cnt2 = 0 ; cnt2 < invalidChars.length;cnt2++) {
+    				if(name.charAt(cnt) == invalidChars[cnt2]) {
+    					errMsg += "記号が入力されています。【" + name.charAt(cnt) + "】\n";
+    					break outerLoop;
+    				}
+            	}
+        	}
     	}
     	
     	// 残高 入力値有無の判定
-    	if(optBalance.isPresent())  {
-    		cust.setBalance(balance);
-    	} else {
+    	if(balance  == null) {
     		errMsg += "金額が入力されていません\n";
+    	}else if(balance == 0) {
+    		errMsg += "金額が０円です\n";
+    	}else if(balance < 0) {
+    		errMsg += "金額が負の入力値です\n";
     	}
     	
     	// 各フィールドの入力値が全て設定されていた場合
-    	if((StringUtils.hasText(cust.getName())) && (cust.getBalance() != null)){
+    	if(errMsg.isEmpty()){
+    		cust.setName(name);
+    		cust.setBalance(balance);
             repository.save(cust);
             model.addAttribute("result", "顧客情報の作成に成功しました");
             return "customer";
