@@ -19,18 +19,31 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8" />
-<title>カスタムエラーページ（開発途中）</title>
+<title>カスタムエラーページ</title>
 </head>
 <body>
-	<!-- エラー内容を表示 -->
-	<h1 th:text="${status}"></h1>
-	<p th:text="${message}"></p>
-	<p th:text="${path}"></p>
-	<p th:text="${timestamp}"></p>
- 
+	<h1>エラー画面</h1>
+	<!-- エラー内容 表示 -->
+	<table border="1">
+	   <tr>
+	     <td>Httpステータスコード</td>
+	     <td th:text="|${status}|"></td>
+	   </tr>
+	   <tr>
+	     <td>エラーメッセージ</td>
+	     <td th:text="|${message}|"></td>
+	   </tr>
+	   <tr>
+	     <td>対象URL</td>
+	     <td th:text="|${path}|"></td>
+	   </tr>
+	   <tr>
+	     <td>発生日時</td>
+	     <td th:text="|${eDate}|"></td>
+	   </tr>
+	 </table>
 	<form method="post" th:action="@{/logout}">
 		<a class="button-style" href="/">一覧画面に戻る</a>
 	</form>
- 
 </body>
 </html>

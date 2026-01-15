@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -31,29 +33,28 @@ public class MyErrorController implements ErrorController {
 	   */
 	@RequestMapping(produces = MediaType.TEXT_HTML_VALUE)
 	public ModelAndView myErrorHtml(HttpServletRequest req, ModelAndView mav) {
- 
-		// HTTP ステータスを決める
+		//日付設定
+		LocalDate curDate = LocalDate.now();																//	現在日付取得 
+		DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy年MM月dd日");	//	フォーマット宣言
+
+		// HTTP ステータス
 		HttpStatus status = getHttpStatus(req);
  
-		// HTTP ステータスをセットする
-		mav.setStatus(status);
+		// モデル設定
+		mav.setStatus(status);			// HTTP ステータス セット
+		mav.setViewName("error");	// ビュー名 error.html 
+		mav.addObject("eDate" , curDate.format(fmt));	//	エラー日付
+		mav.addObject("status" , status.value());				// ステータス設定
+		mav.addObject("path"   , req.getAttribute(RequestDispatcher.ERROR_REQUEST_URI));	// 発生URI
  
-		// ビュー名にerror.htmlをセット
-		mav.setViewName("error");
- 
-		mav.addObject("timestamp", new Date());
-		mav.addObject("status", status.value());
-		mav.addObject("path", req.getAttribute(RequestDispatcher.ERROR_REQUEST_URI));
- 
-		// ステータスに応じて処理
-		if (status == HttpStatus.NOT_FOUND) {
-			// 404 Not Found
-			mav.addObject("message", "ページが見つかりません。");
-		} else {
-			// 404 以外は500 Internal Server Error とする
-			mav.addObject("message", "システムエラーが発生しました。システム管理者にお問い合わせ下さい。");
+		// ステータス判定処理
+		switch(status.value()) {
+			case 404:
+				mav.addObject("message", "ページが見つかりません。"); 
+				break;
+			default :
+				mav.addObject("message", "システムエラーが発生しました。システム管理者にお問い合わせ下さい。");
 		}
- 
 		return mav;
 	}
  
