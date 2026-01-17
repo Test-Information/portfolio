@@ -1,8 +1,7 @@
 package com.example.demo;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,7 +22,12 @@ import jakarta.servlet.http.HttpServletRequest;
 @Controller
 @RequestMapping("/error")
 public class MyErrorController implements ErrorController {
- 
+	final ErrLogRepository repository;
+	
+	public MyErrorController(ErrLogRepository repository) {
+		this.repository = repository;
+	}
+	
 	/**
 	   * HTML レスポンス用の ModelAndView オブジェクトを返す。
 	   *
@@ -34,8 +38,8 @@ public class MyErrorController implements ErrorController {
 	@RequestMapping(produces = MediaType.TEXT_HTML_VALUE)
 	public ModelAndView myErrorHtml(HttpServletRequest req, ModelAndView mav) {
 		//日付設定
-		LocalDate curDate = LocalDate.now();																//	現在日付取得 
-		DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy年MM月dd日");	//	フォーマット宣言
+		LocalDateTime  curDate = LocalDateTime .now();																//	現在日付取得 
+		DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy年MM月dd日 HH:mm:ss");	//	フォーマット宣言
 
 		// HTTP ステータス
 		HttpStatus status = getHttpStatus(req);
@@ -46,11 +50,19 @@ public class MyErrorController implements ErrorController {
 		mav.addObject("eDate" , curDate.format(fmt));	//	エラー日付
 		mav.addObject("status" , status.value());				// ステータス設定
 		mav.addObject("path"   , req.getAttribute(RequestDispatcher.ERROR_REQUEST_URI));	// 発生URI
+		
+		// エラーログ テーブル設定
+		ErrLog eLog = new ErrLog();
+		eLog.setEDate(curDate);
+		eLog.setStatus(status.value());
+		eLog.setPath(req.getAttribute(RequestDispatcher.ERROR_REQUEST_URI).toString());
+		repository.save(eLog);
  
 		// ステータス判定処理
-		switch(status.value()) {
-			case 404:
-				mav.addObject("message", "ページが見つかりません。"); 
+		switch(status) {
+			/* 404 */
+			case NOT_FOUND:
+				mav.addObject("message", "ページが見つかりません。URIをご確認ください。"); 
 				break;
 			default :
 				mav.addObject("message", "システムエラーが発生しました。システム管理者にお問い合わせ下さい。");
@@ -107,21 +119,24 @@ public class MyErrorController implements ErrorController {
 	}
  
 	/**
-	 * レスポンス用の HTTP ステータスを決める。
-	 *
-	 * @param req リクエスト情報
-	 * @return レスポンス用 HTTP ステータス
+	 * HTTPステータス 判定処理
+	 * 
+	 * @param req    リクエスト情報
+	 * @return 処理成功時：該当HTTP ステータスコード
+	 *                処理失敗時：サーバーエラー ステータスコード
 	 */
 	private static HttpStatus getHttpStatus(HttpServletRequest req) {
-		// HTTP ステータスを決める
-		// ここでは 404 以外は全部 500 にする
+		// HTTP ステータス設定
 		Object statusCode = req.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
-		HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
-		if (statusCode != null && statusCode.toString().equals("404")) {
-			status = HttpStatus.NOT_FOUND;
+		// 型・存在チェック
+		if(statusCode instanceof Integer) {
+			HttpStatus status = HttpStatus.resolve((int)statusCode);
+			 if(status != null) {
+					return status;
+			 }
 		}
-		return status;
+		// エラーチェック不正時 デフォルト値
+		return HttpStatus.INTERNAL_SERVER_ERROR;
 	}
- 
 }
 		
