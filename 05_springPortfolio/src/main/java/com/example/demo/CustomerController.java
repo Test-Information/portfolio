@@ -1,7 +1,5 @@
 package com.example.demo;
 
-import java.util.Optional;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.StringUtils;
@@ -18,11 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
  * 【今後の修正予定】
  * ポートフォリオとして公開を優先するため以下は公開後の対応を行う予定とする
  * １．バリデーション処理の追加
- *  1)記号あり
  *  2)0円の場合
  *  3)ゼロパディングされた金額の場合
- *  4)テキストボックスがデベロッパーツールで改変された場合
- *  5)long型への文字列代入(400)
+ *  4)テキストボックスがデベロッパーツールで改変された場合)
  */
 @Controller
 public class CustomerController {
@@ -51,7 +47,7 @@ public class CustomerController {
      */
     @PostMapping("/customer")
     public String postCustomer(
-    		@RequestParam (required = false) String name,
+    		@RequestParam(required = false) String name,
     		@RequestParam(required = false) Long balance,
     		Model model) {
 
@@ -59,11 +55,10 @@ public class CustomerController {
     	String errMsg = "";								// エラーメッセージ初期化
     	char[] invalidChars = { '!', '"', '#', '$', '%', '&', '\'', '(', ')', '=', '~', '|', '`', '{', '+', '*', '}', '<', '>', '?', '_' 	};	// 入力値として無効な文字一覧
     	
-    	
-    	// 顧客名 入力値有無の判定
+    	/** 顧客名 入力値有無 判定 */
     	if(!(StringUtils.hasText(name))) {
     		errMsg += "顧客名が入力されていません\n";
-    	}else {
+    	} else {
         	outerLoop:
         	for(int cnt = 0; cnt < name.length(); cnt++) {
             	for(int cnt2 = 0 ; cnt2 < invalidChars.length;cnt2++) {
@@ -75,7 +70,7 @@ public class CustomerController {
         	}
     	}
     	
-    	// 残高 入力値有無の判定
+    	/** 残高 入力値有無 判定 */
     	if(balance  == null) {
     		errMsg += "金額が入力されていません\n";
     	}else if(balance == 0) {
@@ -84,15 +79,15 @@ public class CustomerController {
     		errMsg += "金額が負の入力値です\n";
     	}
     	
-    	// 各フィールドの入力値が全て設定されていた場合
+    	/** 各フィールド 入力値設定済 */
     	if(errMsg.isEmpty()){
-    		cust.setName(name);
-    		cust.setBalance(balance);
-            repository.save(cust);
+    		cust.setCustName(name);			// 顧客名設定
+    		cust.setCustBalance(balance);	// 残高設定
+            repository.save(cust);					// エンティティ更新
             model.addAttribute("result", "顧客情報の作成に成功しました");
             return "customer";
     	} else {
-    		model.addAttribute("result", errMsg);	//各エラーメッセージの一元設定
+    		model.addAttribute("result", errMsg);	//各エラーメッセージ 一元設定
     	}
         return "customer";
     }

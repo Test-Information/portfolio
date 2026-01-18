@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
  */
 @Controller
 public class MainController {
-	/** メニュー画面を表示します */
+	/** メニュー画面を表示 */
 	@GetMapping("/")
     public String index() {
         return "index";

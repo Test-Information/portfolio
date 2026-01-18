@@ -15,15 +15,15 @@ import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping("/error")
-public class MyErrorController implements ErrorController {
-	final ErrLogRepository repository;
+public class CustomErrorController implements ErrorController {
+	final ErrorLogRepository repository;
 	
-	public MyErrorController(ErrLogRepository repository) {
+	public CustomErrorController(ErrorLogRepository repository) {
 		this.repository = repository;
 	}
 	
 	/**
-	   * HTML レスポンス用の ModelAndView オブジェクトを返す。
+	   * エラー画面 表示設定処理
 	   *
 	   * @param req リクエスト情報
 	   * @param mav レスポンス情報
@@ -31,36 +31,27 @@ public class MyErrorController implements ErrorController {
 	   */
 	@RequestMapping(produces = MediaType.TEXT_HTML_VALUE)
 	public ModelAndView myErrorHtml(HttpServletRequest req, ModelAndView mav) {
-		//日付設定
+		/** 日付設定 */
 		LocalDateTime  curDate = LocalDateTime .now();																//	現在日付取得 
 		DateTimeFormatter fmt = DateTimeFormatter.ofPattern("yyyy年MM月dd日 HH:mm:ss");	//	フォーマット宣言
 
-		// HTTP ステータス
+		/** HTTP ステータス */
 		HttpStatus status = getHttpStatus(req);
  
-		// モデル設定
+		/** モデル設定 */
 		mav.setStatus(status);			// HTTP ステータス セット
 		mav.setViewName("error");	// ビュー名 error.html 
 		mav.addObject("eDate" , curDate.format(fmt));	//	エラー日付
 		mav.addObject("status" , status.value());				// ステータス設定
 		mav.addObject("path"   , req.getAttribute(RequestDispatcher.ERROR_REQUEST_URI));	// 発生URI
 		
-		// エラーログ テーブル設定
-		ErrLog eLog = new ErrLog();
-		eLog.setEDate(curDate);
-		eLog.setStatus(status.value());
-		eLog.setPath(req.getAttribute(RequestDispatcher.ERROR_REQUEST_URI).toString());
-		repository.save(eLog);
- 
-		// ステータス判定処理
-		switch(status) {
-			/* 404 */
-			case NOT_FOUND:
-				mav.addObject("message", "ページが見つかりません。URIをご確認ください。"); 
-				break;
-			default :
-				mav.addObject("message", "システムエラーが発生しました。システム管理者にお問い合わせ下さい。");
-		}
+		/** エラーログ テーブル設定 */
+		ErrorLog eLog = new ErrorLog();	// エラーログ エンティティ
+		eLog.setErrDate(curDate);				// エラー日付 設定
+		eLog.setErrStatus(status.value());	// ステータスコード設定
+		eLog.setErrPath(req.getAttribute(RequestDispatcher.ERROR_REQUEST_URI).toString());
+		repository.save(eLog);	// エンティティ更新
+
 		return mav;
 	}
 	/**
@@ -71,17 +62,17 @@ public class MyErrorController implements ErrorController {
 	 *                処理失敗時：サーバーエラー ステータスコード
 	 */
 	private static HttpStatus getHttpStatus(HttpServletRequest req) {
-		// HTTP ステータス設定
+		/** HTTP ステータス設定 */
 		Object statusCode = req.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
-		// 型・存在チェック
+		/** 型・存在チェック */
 		if(statusCode instanceof Integer) {
 			HttpStatus status = HttpStatus.resolve((int)statusCode);
 			 if(status != null) {
 					return status;
 			 }
 		}
-		// エラーチェック不正時 デフォルト値
-		return HttpStatus.INTERNAL_SERVER_ERROR;
+		/** エラーチェック不正時 デフォルト値 */
+		return HttpStatus.INTERNAL_SERVER_ERROR;	// サーバーエラー
 	}
 }
 		
