@@ -13,13 +13,13 @@
 ---
 
 ## 成果物一覧
-| 制作区分 | 制作物名                         | 説明                                                            | 言語      |
+| 制作区分 | 制作物名                         | 説明                                                            | 技術スタック      |
 | -------- | -------------------------------- | --------------------------------------------------------------- |---------- |
 | 01       | [ファイル名検索バッチ](https://github.com/Test-Information/portfolio/blob/main/01_FileNameSearch/01_FileNameSearch.bat)             | 指定のディレクトリ配下からファイルを検索するバッチです。  過去のプロジェクトで作成したバッチを思い出しながら作成しました。              | Batch          |
 | 02       | [OracleDBユーザー選択バッチ](https://github.com/Test-Information/portfolio/blob/main/02_SQLPlus_LoginUserSelect/02_SQLPlus_LoginUserSelect.bat)       | OracleDBのログインを効率化するバッチです。SQL資格の勉強の途中で作成したものをポートフォリオ用にブラッシュアップさせて公開します。                            | Batch          |
 | 03       | [ウィンドウスナップexe](https://github.com/Test-Information/portfolio/blob/main/03_StartUpFiles/src/StartUpFiles.cpp)            | PC起動時のスタートアップ時に自分でウィンドウを整理する手間を削減することを目的としたウィンドウを右か左にスナップするexeです。C言語案件参画時に学習のために作成した自分用のツールです。  | C言語          |
 | 04       | [勤務表自動リセット マクロ](https://github.com/Test-Information/portfolio/blob/main/04_Work_Schedule/src/Module1.bas)            | 勤務表の定例的な入力作業を自動化するツールです。毎月の自宅環境での勤務表の入力マクロをポートフォリオ用にブラッシュアップさせ公開します。  | Excel VBA          |
-| 05       | [業務用Webアプリ](https://github.com/Test-Information/portfolio/blob/main/05_springPortfolio/docs/pdf/05_How_to_use.pdf)            | 架空の業務を想定した小規模なWebアプリです。  | Java (Spring Boot)          |
+| 05       | [業務用Webアプリ](https://github.com/Test-Information/portfolio/blob/main/05_springPortfolio/docs/pdf/05_How_to_use.pdf)            | 架空の業務を想定した小規模なWebアプリです。  | Java (Spring Boot)  Thymeleaf  Render  Neon(PostgreSQL)          |
 | 98       | [ソースコード](https://github.com/Test-Information/portfolio/blob/main/98_SourceCode/earthquake.vbs)       | ソースコードなど学習したものの断片的なファイルです。                                                | VBScript          |
 | 99       | その他 制作物 管理フォルダ       | [WBS](https://github.com/Test-Information/portfolio/blob/main/99_Others/pdf/WBS.pdf)、[バグ管理表](https://github.com/Test-Information/portfolio/blob/main/99_Others/pdf/Bug_Management_%231.pdf)を格納                                                | -          |
 

@@ -2,18 +2,12 @@ package com.example.demo;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.HashMap;
-import java.util.Map;
 
-import org.springframework.boot.web.error.ErrorAttributeOptions;
-import org.springframework.boot.web.servlet.error.DefaultErrorAttributes;
 import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.context.request.ServletWebRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import jakarta.servlet.RequestDispatcher;
@@ -69,55 +63,6 @@ public class MyErrorController implements ErrorController {
 		}
 		return mav;
 	}
- 
-	/**
-	 * JSON レスポンス用の ResponseEntity オブジェクトを返す。
-	 *
-	 * @param req リクエスト情報
-	 * @return JSON レスポンス用の ResponseEntity オブジェクト
-	 */
-	@RequestMapping
-	public ResponseEntity<Map<String, Object>> myErrorJson(HttpServletRequest req) {
- 
-		// エラー情報を取得
-		Map<String, Object> attr = getErrorAttributes(req);
- 
-		// HTTP ステータスを決める
-		HttpStatus status = getHttpStatus(req);
- 
-		// 出力したい情報をセットする
-		Map<String, Object> body = new HashMap();
-		body.put("status", status.value());
-		body.put("timestamp", attr.get("timestamp"));
-		body.put("error", attr.get("error"));
-		body.put("exception", attr.get("exception"));
-		body.put("message", attr.get("message"));
-		body.put("errors", attr.get("errors"));
-		body.put("trace", attr.get("trace"));
-		body.put("path", attr.get("path"));
- 
-		// 情報を JSON で出力する
-		return new ResponseEntity<>(body, status);
-	}
- 
-	/**
-	  * JSON レスポンス用の エラー情報を抽出する。
-	  *
-	  * @param req リクエスト情報
-	  * @return エラー情報
-	  */
-	private Map<String, Object> getErrorAttributes(HttpServletRequest req) {
-		// DefaultErrorAttributes クラスで詳細なエラー情報を取得する
-		ServletWebRequest swr = new ServletWebRequest(req);
-		DefaultErrorAttributes dea = new DefaultErrorAttributes();
-		ErrorAttributeOptions eao = ErrorAttributeOptions.of(
-				ErrorAttributeOptions.Include.BINDING_ERRORS,
-				ErrorAttributeOptions.Include.EXCEPTION,
-				ErrorAttributeOptions.Include.MESSAGE,
-				ErrorAttributeOptions.Include.STACK_TRACE);
-		return dea.getErrorAttributes(swr, eao);
-	}
- 
 	/**
 	 * HTTPステータス 判定処理
 	 * 
