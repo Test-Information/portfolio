@@ -19,15 +19,17 @@
 | 02       | [OracleDBユーザー選択バッチ](https://github.com/Test-Information/portfolio/blob/main/02_SQLPlus_LoginUserSelect/02_SQLPlus_LoginUserSelect.bat)       | OracleDBのログインを効率化するバッチです。SQL資格の勉強の途中で作成したものをポートフォリオ用にブラッシュアップさせて公開します。                            | Batch          |
 | 03       | [ウィンドウスナップexe](https://github.com/Test-Information/portfolio/blob/main/03_StartUpFiles/src/StartUpFiles.cpp)            | PC起動時のスタートアップ時に自分でウィンドウを整理する手間を削減することを目的としたウィンドウを右か左にスナップするexeです。C言語案件参画時に学習のために作成した自分用のツールです。  | C言語          |
 | 04       | [勤務表自動リセット マクロ](https://github.com/Test-Information/portfolio/blob/main/04_Work_Schedule/src/Module1.bas)            | 勤務表の定例的な入力作業を自動化するツールです。毎月の自宅環境での勤務表の入力マクロをポートフォリオ用にブラッシュアップさせ公開します。  | Excel VBA          |
-| 05       | [業務用Webアプリ](https://github.com/Test-Information/portfolio/blob/main/05_springPortfolio/docs/pdf/05_How_to_use.pdf)            | 架空の業務を想定した小規模なWebアプリです。  | Java (Spring Boot)  Thymeleaf  Render  Neon(PostgreSQL)          |
+| 05       | [業務用Webアプリ](https://github.com/Test-Information/portfolio/blob/main/05_springPortfolio/docs/pdf/05_How_to_use.pdf)            | 架空の業務を想定した小規模なWebアプリです。  | Java (Spring Boot)<br>Thymeleaf<br>Render<br>Neon(PostgreSQL)          |
 | 98       | [ソースコード](https://github.com/Test-Information/portfolio/blob/main/98_SourceCode/earthquake.vbs)       | ソースコードなど学習したものの断片的なファイルです。                                                | VBScript          |
 | 99       | その他 制作物 管理フォルダ       | [WBS](https://github.com/Test-Information/portfolio/blob/main/99_Others/pdf/WBS.pdf)、[バグ管理表](https://github.com/Test-Information/portfolio/blob/main/99_Others/pdf/Bug_Management_%231.pdf)を格納                                                | -          |
 
 ---
 
-## 保有デジタルバッジ  
+## 保有資格  
+**HTML5プロフェッショナル認定試験 レベル1** (2025/11)  
 **[Oracle Certified Java Programmer, Gold SE 8](https://catalog-education.oracle.com/pls/certview/sharebadge?id=1B95E9A663D35A568BF9D4E2A771FE0D11ABCC4B3C5B1CA8B5BDFF58028CC4FE)** (2024/05/25)  
 **[Oracle Certified Java Programmer, Silver SE 8](https://catalog-education.oracle.com/pls/certview/sharebadge?id=53530D71C1F9D80C808FB90F92AA21C7099A92F2E5180E51AD2F324C39097648)** (2023/11/03)  
+**タイピング技能検定 イータイピング・マスター 1級** (2023/2)  
 
 ---
 
