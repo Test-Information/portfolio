@@ -12,9 +12,11 @@
 	     <td>Httpステータスコード</td>
 	     <td th:text="|${status}|"></td>
 	   </tr>
-	   <tr>
+	   <tr th:switch="${status}">
 	     <td>エラーメッセージ</td>
-	     <td th:text="|${message}|"></td>
+		 <td th:case="400">システムエラーが発生しました。システム管理者にお問い合わせ下さい。</td>
+		 <td th:case="404">ページが見つかりません。URIをご確認ください。</td>
+		 <td th:case="*">サーバーエラーが発生しました。システム管理者にお問い合わせ下さい。</td>
 	   </tr>
 	   <tr>
 	     <td>対象URL</td>
