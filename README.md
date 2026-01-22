@@ -4,7 +4,6 @@
 本ポートフォリオでは実装の規模より、環境構築、設計、実装、試験、操作説明書作成、リリースまで、ある程度、自力で完遂できることをアピールするためのものになります。
 ウォーターフォールの現場であれば、高確率で作成する可能性のある成果物を予め作成し、採用担当者様に制作イメージを共有することで現場参画時のミスマッチを少なくすることが目的です。  
 
-また業務時間外に作成しているものなので、制作の規模が小さいことはご容赦いただけますと幸いです。  
 保有技術を全て作品で表現することは時間の都合上、困難なので、ポートフォリオで使用していない技術や表現しきれていない技術でも、
 参画する現場で必要な技術体系なら、質疑応答での補足はさせていただきます。  
 本制作物は過去に在籍していた会社や現場で直接的に使用していたファイルではありませんが、一部参画していたプロジェクトの影響を受けています。  
@@ -20,8 +19,8 @@
 | 03       | [ウィンドウスナップexe](https://github.com/Test-Information/portfolio/blob/main/03_StartUpFiles/src/StartUpFiles.cpp)            | PC起動時のスタートアップ時に自分でウィンドウを整理する手間を削減することを目的としたウィンドウを右か左にスナップするexeです。C言語案件参画時に学習のために作成した自分用のツールです。  | C言語          |
 | 04       | [勤務表自動リセット マクロ](https://github.com/Test-Information/portfolio/blob/main/04_Work_Schedule/src/Module1.bas)            | 勤務表の定例的な入力作業を自動化するツールです。毎月の自宅環境での勤務表の入力マクロをポートフォリオ用にブラッシュアップさせ公開します。  | Excel VBA          |
 | 05       | [業務用Webアプリ](https://github.com/Test-Information/portfolio/blob/main/05_springPortfolio/docs/pdf/05_How_to_use.pdf)            | 架空の業務を想定した小規模なWebアプリです。  | Java (Spring Boot)<br>Thymeleaf<br>Render<br>Neon(PostgreSQL)          |
-| 97       | [モックアップ・ワイヤーフレーム](https://github.com/Test-Information/portfolio/blob/main/97_Mockup/pdf/Wire_Frame.pdf)       | 現場で作成したツールのロジックを実装せず、外観だけを再現した模倣品を格納するフォルダです。<br>作成の目的は現場でどのような課題を解決してきたかをアピールするためです。<br>ただし、自作したもののみを対象とし、業務上の機密事項は含んでおらず、実務で直接的に使用したものではありません。                                                |           |
-| 98       | [ソースコード](https://github.com/Test-Information/portfolio/blob/main/98_SourceCode/earthquake.vbs)       | ソースコードなど学習したものの断片的なファイルです。                                                | デザイン等          |
+| 97       | [モックアップ・ワイヤーフレーム](https://github.com/Test-Information/portfolio/blob/main/97_Mockup/pdf/Wire_Frame.pdf)       | 現場で作成したツールのロジックを実装せず、外観だけを再現した模倣品を格納するフォルダです。<br>作成の目的は現場でどのような課題を解決してきたかをアピールするためです。<br>ただし、自作したもののみを対象とし、業務上の機密事項は含んでおらず、実務で直接的に使用したものではありません。                                                | デザイン等          |
+| 98       | [ソースコード](https://github.com/Test-Information/portfolio/blob/main/98_SourceCode/earthquake.vbs)       | ソースコードなど学習したものの断片的なファイルです。                                                | VBScript          |
 | 99       | その他 制作物 管理フォルダ       | [WBS](https://github.com/Test-Information/portfolio/blob/main/99_Others/pdf/WBS.pdf)、[バグ管理表](https://github.com/Test-Information/portfolio/blob/main/99_Others/pdf/Bug_Management_%231.pdf)を格納                                                | -          |
 
 ---
@@ -50,4 +49,4 @@ Officeファイルに関してはPDF版を用意いたしました。
 - [試験項目および証跡](https://github.com/Test-Information/portfolio/blob/main/01_FileNameSearch/docs/pdf/01_TestCase_v1.0.0.pdf)
 - [操作説明書](https://github.com/Test-Information/portfolio/blob/main/01_FileNameSearch/docs/pdf/01_How_to_use_v1.0.0.pdf)  
 - [動画（試験証跡）](https://github.com/Test-Information/portfolio/issues)  
-- [ワイヤーフレーム](https://github.com/Test-Information/portfolio/blob/main/97_Mockup/Log_Analysis_Macro.pdf)  
+- [ワイヤーフレーム](https://github.com/Test-Information/portfolio/blob/main/97_Mockup/pdf/Log_Analysis_Macro.pdf)  
