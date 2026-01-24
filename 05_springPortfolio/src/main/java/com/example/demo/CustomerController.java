@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestParam;
  * ポートフォリオとして公開を優先するため以下は公開後の対応を行う予定とする
  * １．バリデーション処理の追加
  *  2)0円の場合
- *  3)ゼロパディングされた金額の場合
  *  4)テキストボックスがデベロッパーツールで改変された場合)
  */
 @Controller
