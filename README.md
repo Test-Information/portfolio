@@ -21,7 +21,7 @@
 | 05       | [業務を想定したWebアプリ](https://github.com/Test-Information/portfolio/blob/main/05_springPortfolio/docs/pdf/05_How_to_use.pdf)            | 架空の業務を想定した小規模なWebアプリです。  | Java (Spring Boot)<br>Thymeleaf<br>Render<br>Neon(PostgreSQL)<br>JUnit          |
 | 97       | [モックアップ・ワイヤーフレーム](https://github.com/Test-Information/portfolio/blob/main/97_Mockup/pdf/Wire_Frame.pdf)       | 現場で作成したツールの外観だけを再現したファイルを格納するフォルダです。<br>業務上の機密事項は含んでおらず、実務で直接的に使用したものではありません。                                                | デザイン等          |
 | 98       | [ソースコード](https://github.com/Test-Information/portfolio/blob/main/98_SourceCode/earthquake.vbs)       | ソースコードなど学習したものの断片的なファイルです。                                                | VBScript          |
-| 99       | その他 制作物 管理フォルダ       | [WBS](https://github.com/Test-Information/portfolio/blob/main/99_Others/pdf/WBS.pdf)、[バグ管理表](https://github.com/Test-Information/portfolio/blob/main/99_Others/pdf/Bug_Management_%231.pdf)を格納                                                | -          |
+| 99       | その他 制作物 管理フォルダ       | [補足資料](https://github.com/Test-Information/portfolio/blob/main/99_Others/pdf/Supplement.pdf)、[WBS](https://github.com/Test-Information/portfolio/blob/main/99_Others/pdf/WBS.pdf)、[バグ管理表](https://github.com/Test-Information/portfolio/blob/main/99_Others/pdf/Bug_Management_%231.pdf)を格納                                                | -          |
 
 ---
 
