@@ -8,7 +8,7 @@ SELECT
     NVL(ap.grantor,'未設定') AS "権限付与実行ユーザ",
     NVL(ap.privilege,'未設定') AS "オブジェクト権限",
     NVL(ap.grantable,'未設定') AS "GRANT OPTION付与",
-    NVL(TO_CHAR(au.created,'YYYY-MM-DD'),'未設定') AS "ユーザー作成日"
+    NVL(TO_CHAR(au.created,'YYYY"年"MM"月"DD"日" HH24"時"MI"分"'),'未設定') AS "ユーザー作成日"
 FROM all_users au
 LEFT JOIN all_tab_privs ap
 ON  au.username = ap.grantee
@@ -48,17 +48,6 @@ FROM
     GROUP BY owner) at;
     
 
-**--SQL>
-**--SQL> --#２．学習テーブル抽出クエリー#
-**--SQL> SELECT
-**--  2      ROWNUM AS "No.",
-**--  3      at.*
-**--  4  FROM
-**--  5      (SELECT owner || 'で作成したテーブル数：' AS "集計対象", COUNT(*) AS "集計数"
-**--  6      FROM all_tables --全テーブル格納テーブル
-**--  7      WHERE tablespace_name = 'USERS' --表領域指定
-**--  8      GROUP BY owner) at;
-**--
 **--       No. 集計対象                             集計数
 **------------ ------------------------------ ------------
 **--         1 TEST_SCMで作成したテーブル数：           35
